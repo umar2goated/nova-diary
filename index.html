@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nova Diary</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4CAF50">
+</head>
+<body>
+<div id="loader">Loading Nova Diary...</div>
+<div id="app" class="hidden">
+  <header>
+    <h1>Nova Diary</h1>
+    <div class="top-controls">
+      <button id="modeToggle">Light/Dark</button>
+      <select id="soundSelect">
+        <option value="">🎵 Choose a Sound</option>
+        <option value="forest">🌲 Forest</option>
+        <option value="rain">☔ Rain</option>
+        <option value="ocean">🌊 Ocean</option>
+        <option value="campfire">🔥 Campfire</option>
+        <option value="snow">❄️ Snowy Wind</option>
+      </select>
+      <button id="feedbackBtn">💬 Feedback</button>
+    </div>
+  </header>
+
+  <section class="pin-section">
+    <h2>Enter or Set PIN</h2>
+    <input type="password" id="pinInput" placeholder="Enter PIN">
+    <button id="pinButton">Unlock</button>
+  </section>
+
+  <section class="diary-section hidden">
+    <h2>Write a New Entry</h2>
+    <select id="moodSelect">
+      <option value="happy">😊 Happy</option>
+      <option value="sad">😢 Sad</option>
+      <option value="angry">😡 Angry</option>
+      <option value="calm">😌 Calm</option>
+      <option value="excited">🤩 Excited</option>
+      <option value="anxious">😰 Anxious</option>
+      <option value="relaxed">😌 Relaxed</option>
+      <option value="motivated">🚀 Motivated</option>
+      <option value="grateful">🙏 Grateful</option>
+      <option value="lonely">🥺 Lonely</option>
+    </select>
+    <textarea id="diaryEntry" placeholder="What's on your mind?"></textarea>
+    <button id="saveBtn">Save Entry</button>
+  </section>
+
+  <section class="past-entries hidden">
+    <h2>Past Entries</h2>
+    <div id="entriesContainer"></div>
+  </section>
+
+  <section class="quotes-section">
+    <h2>Inspirational Quotes</h2>
+    <p id="quoteText"></p>
+    <button id="nextQuoteBtn">Next Quote</button>
+  </section>
+</div>
+
+<!-- Feedback Popup -->
+<div id="feedbackPopup" class="popup">
+  <div class="popup-content wide">
+    <button id="closeFeedback" class="close-btn">❌</button>
+    <h2>Share Your Feedback</h2>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfQHMAD4ozDjr-ldZG1BN2Chvp7ppNP31IAC3V30d9mD8W4Qg/viewform?embedded=true"
+      width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" allowfullscreen>
+      Loading…
+    </iframe>
+  </div>
+</div>
+
+<!-- Background audio -->
+<audio id="ambientAudio" loop>
+  <source id="audioSource" src="" type="audio/mpeg">
+</audio>
+
+<!-- Main script -->
+<script src="script.js"></script>
+
+<!-- PWA support -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(reg => console.log('Service worker registered!', reg))
+      .catch(err => console.log('Service worker error:', err));
+  }
+</script>
+
+</body>
+</html>
