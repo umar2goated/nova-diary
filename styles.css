@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  padding: 20px;
+  transition: background 0.5s, color 0.5s;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.top-controls {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+header button, #soundSelect {
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #4CAF50;
+  color: #fff;
+}
+
+#soundSelect option {
+  color: #000;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.entry {
+  background: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.blur-content.locked {
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+#loader {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 20%;
+}
+
+body.dark {
+  background: #222;
+  color: #eee;
+}
+
+body.mood-happy { background: #fceabb; }
+body.mood-sad { background: #a1c4fd; }
+body.mood-angry { background: #ff9a9e; }
+body.mood-calm { background: #b2fefa; }
+body.mood-excited { background: #f6d365; }
+body.mood-anxious { background: #f5f7fa; }
+body.mood-relaxed { background: #c2e9fb; }
+body.mood-motivated { background: #ffecd2; }
+body.mood-grateful { background: #d4fc79; }
+body.mood-lonely { background: #cfd9df; }
+
+.quotes-section {
+  margin-top: 30px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.quotes-section h2 {
+  margin-bottom: 10px;
+}
+
+.quotes-section button {
+  margin-top: 10px;
+}
+
+/* Feedback Popup */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 10px;
+  position: relative;
+  max-height: 95vh;
+  overflow-y: auto;
+}
+
+.popup-content.wide {
+  max-width: 700px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+}
