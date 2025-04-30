@@ -7,7 +7,7 @@ window.onload = function () {
     loadSavedSound();
     setMoodBackground();
     
-    // If user already maxed out PIN attempts, show Forgot PIN link
+    // Show “Forgot PIN?” if they’ve already maxed attempts
     if (pinAttempts >= MAX_PIN_ATTEMPTS) {
       forgotPinLink.classList.remove('hidden');
     }
@@ -35,10 +35,13 @@ const quoteText      = document.getElementById('quoteText');
 const nextQuoteBtn   = document.getElementById('nextQuoteBtn');
 
 // — State & Constants —
-let entries = JSON.parse(localStorage.getItem('novaEntries')) || [];
-let userPIN = localStorage.getItem('novaPIN') || null;
-let pinAttempts = parseInt(localStorage.getItem('novaPinAttempts')) || 0;
+let entries         = JSON.parse(localStorage.getItem('novaEntries')) || [];
+let userPIN         = localStorage.getItem('novaPIN')       || null;
+let pinAttempts     = parseInt(localStorage.getItem('novaPinAttempts')) || 0;
 const MAX_PIN_ATTEMPTS = 3;
+
+// **HERE** is the missing declaration:
+let currentQuote = 0;
 
 const quotes = [
   "Believe in yourself and all that you are.",
@@ -67,11 +70,9 @@ function updateEntriesDisplay() {
   entries.forEach((entry, i) => {
     const div = document.createElement('div');
     div.className = 'entry';
-    // Header
     const h4 = document.createElement('h4');
     h4.innerText = `${getMoodEmoji(entry.mood)} ${capitalize(entry.mood)} — ${entry.date}`;
     div.appendChild(h4);
-    // Blurrable content
     const bc = document.createElement('div');
     bc.className = 'blur-content';
     const p = document.createElement('p');
@@ -79,7 +80,6 @@ function updateEntriesDisplay() {
     bc.appendChild(p);
     if (entry.locked) bc.classList.add('locked');
     div.appendChild(bc);
-    // Buttons
     if (!entry.locked) {
       const eBtn = document.createElement('button');
       eBtn.innerText = 'Edit';
@@ -258,7 +258,7 @@ function getMoodEmoji(m) {
   return {
     happy:"😊", sad:"😢", angry:"😡", calm:"😌", excited:"🤩",
     anxious:"😰", relaxed:"😌", motivated:"🚀", grateful:"🙏", lonely:"🥺"
-  }[m] || "";
+  }[arguments[0]] || "";
 }
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
